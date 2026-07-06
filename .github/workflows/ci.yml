@@ -8,7 +8,7 @@ on:
     types: [opened, reopened, synchronize]
 
 env:
-  UV_VERSION: 0.6.17
+  UV_VERSION: 0.11.26
   DEFAULT_PYTHON_VERSION: '3.13'
 
 concurrency:
@@ -22,13 +22,12 @@ jobs:
 
     steps:
     - name: Check out the repo
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: Install uv version ${{ env.UV_VERSION }}
-      uses: astral-sh/setup-uv@v6
+      uses: astral-sh/setup-uv@v8
       with:
         version: ${{ env.UV_VERSION }}
-        enable-cache: true
 
     - name: Install python ${{ env.DEFAULT_PYTHON_VERSION }} using uv
       run: uv python install ${{ env.DEFAULT_PYTHON_VERSION }}
@@ -46,13 +45,12 @@ jobs:
 
     steps:
     - name: Check out the repo
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: Install uv version ${{ env.UV_VERSION }}
-      uses: astral-sh/setup-uv@v6
+      uses: astral-sh/setup-uv@v8
       with:
         version: ${{ env.UV_VERSION }}
-        enable-cache: true
 
     - name: Install python ${{ env.DEFAULT_PYTHON_VERSION }} using uv
       run: uv python install ${{ env.DEFAULT_PYTHON_VERSION }}
@@ -86,13 +84,12 @@ jobs:
 
     steps:
     - name: Check out the repo
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: Install uv version ${{ env.UV_VERSION }}
-      uses: astral-sh/setup-uv@v6
+      uses: astral-sh/setup-uv@v8
       with:
         version: ${{ env.UV_VERSION }}
-        enable-cache: true
 
     - name: Install python ${{ matrix.python }} using uv
       run: uv python install ${{ matrix.python }}
@@ -106,7 +103,7 @@ jobs:
         pytest
 
     - name: Upload coverage data
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: coverage-data-${{ matrix.session }}-${{ matrix.os }}-${{ matrix.python
           }}
@@ -119,13 +116,12 @@ jobs:
 
     steps:
     - name: Check out the repo
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: Install uv version ${{ env.UV_VERSION }}
-      uses: astral-sh/setup-uv@v6
+      uses: astral-sh/setup-uv@v8
       with:
         version: ${{ env.UV_VERSION }}
-        enable-cache: true
 
     - name: Install python ${{ env.DEFAULT_PYTHON_VERSION }} using uv
       run: uv python install ${{ env.DEFAULT_PYTHON_VERSION }}
@@ -142,7 +138,7 @@ jobs:
         docs docs/_build
 
     - name: Upload docs
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: docs
         path: docs/_build
@@ -154,13 +150,12 @@ jobs:
 
     steps:
     - name: Check out the repo
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: Install uv version ${{ env.UV_VERSION }}
-      uses: astral-sh/setup-uv@v6
+      uses: astral-sh/setup-uv@v8
       with:
         version: ${{ env.UV_VERSION }}
-        enable-cache: true
 
     - name: Install python ${{ env.DEFAULT_PYTHON_VERSION }} using uv
       run: uv python install ${{ env.DEFAULT_PYTHON_VERSION }}
@@ -169,7 +164,7 @@ jobs:
       run: uv sync -p ${{ env.DEFAULT_PYTHON_VERSION }} --frozen --only-group test
 
     - name: Download coverage data
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         pattern: coverage-data-*
         merge-multiple: true
@@ -184,6 +179,6 @@ jobs:
       run: uv run -p ${{ env.DEFAULT_PYTHON_VERSION }} --no-sync coverage xml -i
 
     - name: Upload coverage report
-      uses: codecov/codecov-action@v5
+      uses: codecov/codecov-action@v7
       with:
         token: ${{ secrets.CODECOV_TOKEN }}

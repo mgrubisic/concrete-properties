@@ -6,7 +6,7 @@ on:
     - master
 
 env:
-  UV_VERSION: 0.6.17
+  UV_VERSION: 0.11.26
   DEFAULT_PYTHON_VERSION: '3.13'
 
 jobs:
@@ -19,12 +19,12 @@ jobs:
 
     steps:
     - name: Check out the repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
       with:
         fetch-depth: 2
 
     - name: Install uv version ${{ env.UV_VERSION }}
-      uses: astral-sh/setup-uv@v6
+      uses: astral-sh/setup-uv@v8
       with:
         version: ${{ env.UV_VERSION }}
 
@@ -62,7 +62,7 @@ jobs:
         repository-url: https://test.pypi.org/legacy/
 
     - name: Publish the release notes
-      uses: release-drafter/release-drafter@v6
+      uses: release-drafter/release-drafter@v7
       with:
         publish: ${{ steps.check-version.outputs.tag != '' }}
         tag: ${{ steps.check-version.outputs.tag }}

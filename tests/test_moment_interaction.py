@@ -157,12 +157,12 @@ def test_sorting_and_duplicates():
 
 def test_limit_validation():
     """Tests limits validation."""
-    with pytest.raises(ValueError, match="Length of limits must equal 2."):
+    with pytest.raises(ValueError, match=r"Length of limits must equal 2."):
         conc_sec.moment_interaction_diagram(
             limits=[("D", 1)],
         )
 
-    with pytest.raises(ValueError, match="Length of limits must equal 2."):
+    with pytest.raises(ValueError, match=r"Length of limits must equal 2."):
         conc_sec.moment_interaction_diagram(
             limits=[
                 ("D", 1),

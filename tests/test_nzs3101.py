@@ -184,13 +184,8 @@ def test_nzs3101_modulus_of_rupture(compressive_strength, density, calc_value):
 
 
 @pytest.mark.parametrize(
-    "compressive_strength, ",
-    [
-        (20),
-        (30),
-        (40),
-        (50),
-    ],
+    "compressive_strength",
+    [20, 30, 40, 50],
 )
 def test_nzs3101_prob_compressive_strength(compressive_strength):
     """Tests prob compressive strength."""

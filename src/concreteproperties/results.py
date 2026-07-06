@@ -1756,7 +1756,7 @@ class BiaxialBendingResults:
         # create plot and setup the plots
         with plotting_context(
             title=f"Biaxial Bending Diagram, N = {n_str} {force_unit}", **kwargs
-        ) as (fig, ax):
+        ) as (_fig, ax):
             if ax is None:
                 msg = "Plot failed."
                 raise RuntimeError(msg)

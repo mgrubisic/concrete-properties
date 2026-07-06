@@ -411,7 +411,7 @@ class AnalysisSection:
         Returns:
             Matplotlib axes object
         """
-        with plotting_context(title=title, aspect=True, **kwargs) as (fig, ax):
+        with plotting_context(title=title, aspect=True, **kwargs) as (_, ax):
             if ax is None:
                 msg = "Plot failed."
                 raise RuntimeError(msg)
