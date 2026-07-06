@@ -9,7 +9,7 @@ on:
 
 env:
   UV_VERSION: 0.11.26
-  DEFAULT_PYTHON_VERSION: '3.13'
+  DEFAULT_PYTHON_VERSION: '3.14'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -69,18 +69,18 @@ jobs:
       fail-fast: false
       matrix:
         include:
+        - {python: '3.14', os: ubuntu-latest, session: tests}
         - {python: '3.13', os: ubuntu-latest, session: tests}
         - {python: '3.12', os: ubuntu-latest, session: tests}
-        - {python: '3.11', os: ubuntu-latest, session: tests}
+        - {python: '3.14', os: windows-latest, session: tests}
         - {python: '3.13', os: windows-latest, session: tests}
         - {python: '3.12', os: windows-latest, session: tests}
-        - {python: '3.11', os: windows-latest, session: tests}
+        - {python: '3.14', os: macos-latest, session: tests}
         - {python: '3.13', os: macos-latest, session: tests}
         - {python: '3.12', os: macos-latest, session: tests}
-        - {python: '3.11', os: macos-latest, session: tests}
-        - {python: '3.13', os: macos-13, session: tests}
-        - {python: '3.12', os: macos-13, session: tests}
-        - {python: '3.11', os: macos-13, session: tests}
+        - {python: '3.14', os: macos-15-intel, session: tests}
+        - {python: '3.13', os: macos-15-intel, session: tests}
+        - {python: '3.12', os: macos-15-intel, session: tests}
 
     steps:
     - name: Check out the repo
