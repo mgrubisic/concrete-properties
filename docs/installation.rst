@@ -4,7 +4,7 @@ Installation
 ============
 
 These instructions will get you a copy of ``concreteproperties`` up and running on your
-machine. You will need a working copy of python 3.11, 3.12 or 3.13 to get started.
+machine. You will need a working copy of python 3.12, 3.13 or 3.14 to get started.
 
 Installing ``concreteproperties``
 ---------------------------------
@@ -29,8 +29,10 @@ Using ``sectionproperties`` CAD Modules
 ---------------------------------------
 
 To import geometry from CAD files, i.e. ``dxf`` or ``.3dm`` files, the optional CAD
-extras must be installed. To install ``sectionproperties`` with the above functionality,
-use the ``dxf`` and/or ``rhino`` options:
+extras must be installed. Note that the ``rhino`` dependencies are not yet supported for
+python 3.14 and so can only be installed for 3.13 and lower. To install
+``sectionproperties`` with the above functionality, use the ``dxf`` and/or ``rhino``
+options:
 
 .. code-block:: shell
 

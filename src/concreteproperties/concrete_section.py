@@ -343,7 +343,7 @@ class ConcreteSection:
 
         # find neutral axis that gives convergence of the the cracked neutral axis
         try:
-            (cracked_results.d_nc, r) = brentq(
+            (cracked_results.d_nc, _r) = brentq(
                 f=self.cracked_neutral_axis_convergence,
                 a=a,
                 b=b,
@@ -956,7 +956,7 @@ class ConcreteSection:
 
         # find neutral axis that gives convergence of the axial force
         try:
-            (d_n, r) = brentq(
+            (_d_n, _r) = brentq(
                 f=self.ultimate_normal_force_convergence,
                 a=a,
                 b=b,
@@ -1819,7 +1819,7 @@ class ConcreteSection:
 
         # find neutral axis that gives convergence of the axial force
         try:
-            eps0, r = brentq(
+            eps0, _r = brentq(
                 f=self.service_normal_force_convergence,
                 a=-0.1,
                 b=0.1,
@@ -2190,7 +2190,7 @@ class ConcreteSection:
         Returns:
             Matplotlib axes object
         """
-        with plotting_context(title=title, aspect=True, **kwargs) as (fig, ax):
+        with plotting_context(title=title, aspect=True, **kwargs) as (_, ax):
             if ax is None:
                 msg = "Plot failed."
                 raise RuntimeError(msg)

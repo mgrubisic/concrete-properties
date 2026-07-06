@@ -56,7 +56,7 @@ def test_modifiedmander_invalid_sect_type():
 
 def test_modifiedmander_confined_warning():
     """Tests the modified mander profile (confined warning)."""
-    with pytest.warns(UserWarning):
+    with pytest.warns(UserWarning, match="Reverting analysis to utilise"):
         ssp.ModifiedMander(
             elastic_modulus=30e3,
             compressive_strength=30,

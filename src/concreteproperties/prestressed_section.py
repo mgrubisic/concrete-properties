@@ -166,7 +166,7 @@ class PrestressedSection(ConcreteSection):
 
         # find neutral axis that gives convergence of the the cracked neutral axis
         try:
-            cracked_results.d_nc, r = brentq(
+            cracked_results.d_nc, _r = brentq(
                 f=self.cracked_neutral_axis_convergence,
                 a=a,
                 b=b,
@@ -270,7 +270,7 @@ class PrestressedSection(ConcreteSection):
 
         def calc_min_stress():
             # calculate extreme fibre in global coordinates
-            extreme_fibre, d_t = utils.calculate_extreme_fibre(
+            extreme_fibre, _d_t = utils.calculate_extreme_fibre(
                 points=self.compound_geometry.points, theta=theta
             )
 
@@ -738,7 +738,7 @@ class PrestressedSection(ConcreteSection):
 
         # find neutral axis that gives convergence of the axial force
         try:
-            eps0, r = brentq(
+            eps0, _r = brentq(
                 f=self.service_normal_force_convergence,
                 a=-0.1,
                 b=0.1,

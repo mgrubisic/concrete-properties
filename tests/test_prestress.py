@@ -50,7 +50,7 @@ def test_asymmetric_section():
     )
 
     with pytest.raises(
-        ValueError, match="PrestressedSection must be symmetric about y-axis."
+        ValueError, match=r"PrestressedSection must be symmetric about y-axis."
     ):
         PrestressedSection(geom)
 

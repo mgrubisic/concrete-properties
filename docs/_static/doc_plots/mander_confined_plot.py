@@ -125,7 +125,7 @@ def mander_confined_plot(render=False):
     plt.yticks(y_label, labels=y_annotation, fontsize=16)
 
     # set min axes extent
-    xmin, xmax, ymin, ymax = plt.axis()
+    xmin, _, ymin, _ = plt.axis()
     ax.axes.set_xlim(xmin)
     ax.axes.set_ylim(ymin)
 
